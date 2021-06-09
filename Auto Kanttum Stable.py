@@ -1,8 +1,12 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
-
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support.expected_conditions import presence_of_element_located
+import time
 
 def converter_notas(nota):
     if nota == '3':
@@ -18,10 +22,6 @@ def converter_notas(nota):
     else:
         mencao = nota
     return mencao
-
-
-# In[ ]:
-
 
 grades = []
 criteria_str = ['Form URL:',
@@ -52,6 +52,7 @@ criteria_str = ['Form URL:',
            'The teacher met the lesson objectives.',
            'Strengths.',
            'Suggestions for improvement.']
+
 #dados de login
 email_mentor = input('E-mail cadastrado: ')
 senha_mentor = input('Senha: ')
@@ -60,17 +61,6 @@ print('Hit ENTER for Not Applicable.')
 for criterion in criteria_str:
     add = input('{}'.format(criterion))
     grades.append(converter_notas(add))
-
-
-# In[ ]:
-
-
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support.expected_conditions import presence_of_element_located
-import time
 
 #init webdriver
 url_form = grades[0]
